@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--1.注解驱动-->
+    <mvc:annotation-driven/>
+    <!--2.静态资源过滤-->
+    <mvc:default-servlet-handler/>
+    <!--3.扫描包：controller-->
+    <context:component-scan base-package="com.ygh.test.controller" />
+    <!--4.视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--5.配置整体的跨域访问规则-->
+    <mvc:cors>
+        <!--allowed-origins="*" 表示跨域方案对所有请求都生效
+            allowed-methods="POST,GET,DELETE,PUT" 允许对请求方式
+            allowed-headers="Content-Type, Access-Control-Allow-Headers,Authorization,X-Requested-with" 允许对请求头
+            allow-credentials="true" 表示是否可以将对请求的响应暴露给页面
+        -->
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-methods="POST,GET,DELETE,PUT"
+                     allowed-headers="Content-Type, Access-Control-Allow-Headers,Authorization,X-Requested-with"
+                     allow-credentials="true"/>
+    </mvc:cors>
+
+
+</beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ygh.test.dao.BookMapper">
+
+    <insert id="addBook" parameterType="Books">
+        insert  into test1.books (bookName, bookCounts, detail)
+        values (#{bookName},#{bookCounts},#{detail});
+    </insert>
+
+    <delete id="deleteBookById" parameterType="int">
+        delete from test1.books where bookID = #{bookId}
+    </delete>
+
+    <update id="updateBook" parameterType="Books">
+        update test1.books
+        set bookName=#{bookName},bookCounts=#{bookCounts},detail=#{detail} where bookID=#{bookID};
+    </update>
+
+    <select id="findBookById" resultType="Books">
+        select * from test1.books where bookID = #{bookId}
+    </select>
+
+    <select id="findAllBook" resultType="Books">
+        select * from test1.books
+    </select>
+
+</mapper>
