@@ -2,9 +2,6 @@
 
 #### 介绍
 在一个SSM项目基础上，引入dubbo和zookeeper。将controller层与service层dao层进行了拆分，使双方通过service接口远程调用的形式，实现了基本的增删改查。
-
-#### 介绍
-在一个SSM项目基础上，引入dubbo和zookeeper。将controller层与service层dao层进行了拆分，使双方通过service接口远程调用的形式，实现了基本的增删改查。
 interface为接口，provider为服务提供者，consumer为消费者。
 
 
