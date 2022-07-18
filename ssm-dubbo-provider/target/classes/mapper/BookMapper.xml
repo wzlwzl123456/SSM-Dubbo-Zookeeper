@@ -2,28 +2,51 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ygh.test.dao.BookMapper">
+<mapper namespace="com.dao.BookMapper">
+    <!--    对dao层接口的具体实现    -->
 
+    <!--增加一个Book-->
     <insert id="addBook" parameterType="Books">
-        insert  into test1.books (bookName, bookCounts, detail)
-        values (#{bookName},#{bookCounts},#{detail});
+        insert into ssmbuild.books(bookName, bookCounts, detail)
+        values (#{bookName}, #{bookCounts}, #{detail})
     </insert>
 
+    <!--根据id删除一个Book-->
     <delete id="deleteBookById" parameterType="int">
-        delete from test1.books where bookID = #{bookId}
+        delete
+        from ssmbuild.books
+        where bookID = #{bookID}
     </delete>
 
+    <!--更新Book-->
     <update id="updateBook" parameterType="Books">
-        update test1.books
-        set bookName=#{bookName},bookCounts=#{bookCounts},detail=#{detail} where bookID=#{bookID};
+        update ssmbuild.books
+
+        set bookName   = #{bookName},
+            bookCounts = #{bookCounts},
+            detail     = #{detail}
+        where bookID = #{bookID}
     </update>
 
-    <select id="findBookById" resultType="Books">
-        select * from test1.books where bookID = #{bookId}
+    <!--根据id查询,返回一个Book-->
+    <select id="queryBookById" resultType="com.pojo.Books">
+        select *
+        from ssmbuild.books
+        where bookID = #{bookID}
     </select>
 
-    <select id="findAllBook" resultType="Books">
-        select * from test1.books
+    <!--查询全部Book-->
+    <select id="queryAllBook" resultType="Books">
+        select *
+        from ssmbuild.books
+        order by bookID asc
+    </select>
+
+    <select id="fuzzyQuery" resultType="Books">
+        select *
+        from ssmbuild.books
+        where bookName like concat('%', #{name}, '%')
+        order by bookID asc
     </select>
 
 </mapper>

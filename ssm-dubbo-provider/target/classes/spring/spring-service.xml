@@ -14,11 +14,10 @@
        https://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--1.扫描service下的包-->
-    <context:component-scan base-package="com.ygh.test.serviceImpl"/>
+    <context:component-scan base-package="com.serviceImpl"/>
 
     <!--2.将所有业务类注入到Spring-->
-
-
+    <import resource="spring-dao.xml"/>
     <!--3.声明式事务配置-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--注入数据源-->
@@ -38,7 +37,7 @@
     </tx:advice>
     <!--配置事务切入-->
     <aop:config>
-        <aop:pointcut id="txPointCut" expression="execution(* com.ygh.test.dao.*.*(..))"/>
+        <aop:pointcut id="txPointCut" expression="execution(* com.dao.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
     </aop:config>
 </beans>

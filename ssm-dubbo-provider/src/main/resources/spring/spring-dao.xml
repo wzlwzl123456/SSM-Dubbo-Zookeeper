@@ -10,7 +10,7 @@
     <!--1.关联数据库配置文件-->
     <context:property-placeholder location="classpath:database.properties"/>
 
-    <!--2.连接池 c3p0-->
+    <!--2.连接池 c3p0,连接的缓冲池，使得不用每一次请求访问数据库都要重新创建一个连接-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
@@ -41,6 +41,6 @@
         <!--注入 sqlSessionFactory-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!--要扫描的dao包-->
-        <property name="basePackage" value="com.ygh.test.dao"/>
+        <property name="basePackage" value="com.dao"/>
     </bean>
 </beans>

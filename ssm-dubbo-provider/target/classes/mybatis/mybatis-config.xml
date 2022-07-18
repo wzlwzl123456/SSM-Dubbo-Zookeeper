@@ -4,19 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-  <!--日志-->
-  <settings>
-    <setting name="logImpl" value="STDOUT_LOGGING"/>
-  </settings>
+    <!--日志-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
 
-  <typeAliases>
-    <!-- 自动扫描如下的包中的类-->
-     <package name="com.ygh.test.pojo"/>
-  </typeAliases>
+    <typeAliases>
+        <!-- 自动扫描如下的包中的类-->
+        <package name="com.pojo"/>
+    </typeAliases>
 
-  <mappers>
-    <!--引入Mapper文件-->
-    <mapper resource="mapper/BookMapper.xml"/>
-  </mappers>
+    <mappers>
+        <!--引入Mapper文件-->
+        <mapper resource="mapper/BookMapper.xml"/>
+    </mappers>
 
 </configuration>
